@@ -1,5 +1,5 @@
 class StudentsController < ApplicationController
-  
+
   def index
     @students = Student.all
   end
@@ -12,6 +12,11 @@ class StudentsController < ApplicationController
   end
 
   def create
+    @newstu = Student.new
+    @newstu.last_name = params[:last_name]
+    @newstu.first_name = params[:first_name]
+    @newstu.save
+    redirect_to student_path(@newstu)
   end
 
 end
